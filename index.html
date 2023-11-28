@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to the Durham Art Gallery</title>
+  <script>
+    async function fetchData() {
+      const response = await fetch('/api/button-action');
+      const data = await response.json();
+      console.log(data); // Process and display data as needed
+    }
+  </script>
+</head>
+<body>
+  <button onclick="fetchData()">Art Listing for Sale</button>
+</body>
+</html>
