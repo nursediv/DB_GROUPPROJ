@@ -1,32 +1,20 @@
-// Controller for listing all artworks
-exports.artworks_list = (req, res) => {
-    // Logic to retrieve and send all artworks
-    res.send('All artworks sent');
-};
+const express = require('express');
+const router = express.Router();
+const artworksController = require('../controllers/artworksController');
 
-// Controller for getting a single artwork by ID
-exports.artwork_detail = (req, res) => {
-    const id = req.params.id;
-    // Logic to retrieve and send a single artwork
-    res.send(`Artwork with ID ${id} sent`);
-};
+// GET request for list of all Artwork items
+router.get('/', artworksController.artworks_list);
 
-// Controller for creating a new artwork
-exports.artwork_create = (req, res) => {
-    // Logic to create a new artwork
-    res.send('Artwork created');
-};
+// GET request for one Artwork item by ID
+router.get('/:id', artworksController.artwork_detail);
 
-// Controller for updating an existing artwork by ID
-exports.artwork_update = (req, res) => {
-    const id = req.params.id;
-    // Logic to update an artwork
-    res.send(`Artwork with ID ${id} updated`);
-};
+// POST request for creating an Artwork
+router.post('/', artworksController.artwork_create);
 
-// Controller for deleting an artwork by ID
-exports.artwork_delete = (req, res) => {
-    const id = req.params.id;
-    // Logic to delete an artwork
-    res.send(`Artwork with ID ${id} deleted`);
-};
+// PUT request to update an Artwork by ID
+router.put('/:id', artworksController.artwork_update);
+
+// DELETE request to delete an Artwork by ID
+router.delete('/:id', artworksController.artwork_delete);
+
+module.exports = router;
